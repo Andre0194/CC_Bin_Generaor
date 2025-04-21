@@ -2,32 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OS-Based Software Download</title>
+    <title>Auto OS-Based Download</title>
     <script>
         window.onload = function() {
-            // Detect user's OS
             let userAgent = navigator.userAgent;
-            let softwareLink = "#"; // Default link
+            let downloadURL = "#";
 
-            if (userAgent.indexOf("Win") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/final.zip"; // Windows download
-            } else if (userAgent.indexOf("Mac") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/final.zip"; // macOS download
-            } else if (userAgent.indexOf("Linux") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/final.zip"; // Linux download
-            } else if (userAgent.indexOf("Android") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/ready.apk"; // Android download
-            } else if (userAgent.indexOf("iPhone") !== -1 || userAgent.indexOf("iPad") !== -1) {
-                softwareLink = "https://files.myfitnesslife.xyz/final.zip"; // iOS download
+            if (userAgent.includes("Win")) {
+                downloadURL = "https://example.com/software/windows.exe";
+            } else if (userAgent.includes("Mac")) {
+                downloadURL = "https://example.com/software/macos.dmg";
+            } else if (userAgent.includes("Linux")) {
+                downloadURL = "https://example.com/software/linux.tar.gz";
+            } else if (userAgent.includes("Android")) {
+                downloadURL = "https://example.com/software/android.apk";
+            } else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) {
+                downloadURL = "https://example.com/software/ios.ipa";
             }
 
-            // Redirect to the appropriate download link
-            window.location.href = softwareLink;
+            // Redirect automatically
+            window.location.href = downloadURL;
         };
     </script>
 </head>
 <body>
-    <p>Redirecting to the appropriate download based on your OS...</p>
+    <p>Detecting your operating system... You will be redirected shortly.</p>
 </body>
 </html>
