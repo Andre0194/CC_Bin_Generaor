@@ -11,7 +11,7 @@ SEE README FOR MORE INFO
 #>
 # ---------------------------------------------- SCRIPT SETUP -----------------------------------------------
 # Define Connection Variables
-$Token = "7890120010:AAFC34LWI61JXm8hLwz-OlOHVgsXe--pcxg"  # REPLACE $tg with Your Telegram Bot Token ( LEAVE ALONE WHEN USING A STAGER.. eg. A Flipper Zero,  Start-TGC2-Client.vbs etc )
+$Token = ""  # REPLACE $tg with Your Telegram Bot Token ( LEAVE ALONE WHEN USING A STAGER.. eg. A Flipper Zero,  Start-TGC2-Client.vbs etc )
 $PassPhrase = "$env:COMPUTERNAME" # 'password' for this connection (computername by default)
 $global:errormsg = 0 # 1 = return error messages to chat (off by default)
 $HideWindow = 1 # HIDE THE WINDOW - Change to 1 to hide the console window
